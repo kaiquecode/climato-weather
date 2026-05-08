@@ -61,6 +61,7 @@ export function mapCityData(city: WeatherCity, list: ListEntity[]): CurrentCityT
     return {
         name: city.name,
         country: city.sys.country,
+        period: getCityWeatherPeriod(city),
         humidity: city.main.humidity,
         feels_like: Math.round(city.main.feels_like),
         clouds: {
@@ -79,6 +80,18 @@ export function mapCityData(city: WeatherCity, list: ListEntity[]): CurrentCityT
         },
         list: Array.from(mappedItems.values())
     }
+}
+
+export function getCityWeatherPeriod(city: WeatherCity) {
+    const currentTime = city.dt;
+    const sunrise = city.sys.sunrise;
+    const sunset = city.sys.sunset;
+
+    if (currentTime >= sunrise && currentTime < sunset) {
+        return "day";
+    }
+
+    return "night";
 }
 
 export function getWeatherPeriod() {

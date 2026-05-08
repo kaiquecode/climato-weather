@@ -51,7 +51,7 @@ export function Home({ city: initialCity }: { city: CurrentCityType }) {
     }, [cityName]);
 
     const display = useMemo(() => {
-        return <div className="mb-4 text-center">
+        return <div className="weatherSummary text-center">
             {
                 isLoading ?
                     <div className="display m-auto d-flex flex-column align-items-center justify-content-center">
@@ -72,7 +72,7 @@ export function Home({ city: initialCity }: { city: CurrentCityType }) {
                         <div className="textShadow">
                             <p className="m-0 fs-5"  >Hoje, {today.toFormat("dd/MM")}</p>
                             <p className="m-0 displayTemp">{Number(currentCity?.temp.current.toFixed(0))}&deg;C</p>
-                            <p className={`fs-5 m-0 textShadow `} >Máxima: {Number(currentCity?.temp.max.toFixed(0))}&deg;  Miníma: {Number(currentCity?.temp.min.toFixed(0))}&deg;</p>
+                            <p className={`fs-5 m-0 textShadow `} >Máxima: {Number(currentCity?.temp.max.toFixed(0))}&deg;  Mínima: {Number(currentCity?.temp.min.toFixed(0))}&deg;</p>
                         </div>
                         <div className={`w-100 py-1 mt-1 ${weather === "day" ? "text-black" : "text-white textShadow"}`}>
                             <div className={`d-flex justify-content-center gap-2`} >
@@ -100,16 +100,16 @@ export function Home({ city: initialCity }: { city: CurrentCityType }) {
     return (
         city &&
         <React.Fragment>
-            <div className={`h-100 d-flex flex-column justify-content-end p-2`} >
+            <div className={`homeContent h-100 d-flex flex-column justify-content-center p-2`} >
                 <div className={`infoContainer`}>
 
                     {display}
                     <div>
                         {
                             currentCity &&
-                            <div className="d-flex justify-content-between align-items-end mb-2 ">
-                                <p className={`fs-1 m-0 textShadow`}>{currentCity.name} - {currentCity.country}</p>
-                                <img src="/assets/images/logo.png" width={80} style={{ borderRadius: 10 }} />
+                            <div className="cityHeader d-flex justify-content-between align-items-end mb-2 ">
+                                <p className={`fs-1 m-0 textShadow cityTitle`}>{currentCity.name} - {currentCity.country}</p>
+                                <img className="appLogo" src="/assets/images/logo.png" width={80} style={{ borderRadius: 10 }} />
                             </div>
                         }
                         <Collapse in={!!cityNotFound} dimension={"height"}>

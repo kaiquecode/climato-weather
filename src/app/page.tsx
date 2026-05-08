@@ -27,6 +27,7 @@ export default async function Page() {
 export type CurrentCityType = {
   name: string,
   country: string,
+  period: "day" | "night",
   temp: TempType,
   humidity: number;
   feels_like: number

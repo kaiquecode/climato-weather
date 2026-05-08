@@ -22,12 +22,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         }
 
         interval.current = setInterval(() => {
-            updateWeather(getWeatherPeriod());
             setIsMobile(getIsMobile);
         }, 1000);
 
-        updateWeather(getWeatherPeriod());
+        setIsMobile(getIsMobile);
     }, []);
+
+    useEffect(() => {
+        if (city?.period) {
+            updateWeather(city.period);
+        }
+    }, [city?.period, updateWeather]);
 
     return (
         <AppContext.Provider value={{
