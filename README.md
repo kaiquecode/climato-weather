@@ -78,7 +78,7 @@ yarn dev
 
 ## 👤 Autor
 
-Feito com ❤️ por [Kaique Fabrício](https://github.com/Pitho951)
+Feito com ❤️ por [Kaique Fabrício](https://github.com/kaiquecode)
 
 ---
 
